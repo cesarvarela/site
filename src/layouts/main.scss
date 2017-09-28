@@ -1,0 +1,402 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+
+@import "node_modules/hover.css/scss/hover.scss";
+
+$link-color: #CC1100;
+$link-hover-decoration: none;
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+$breakpoints: $grid-breakpoints;
+@import "node_modules/include-media/dist/include-media";
+
+$title-font: 'Montserrat', sans-serif;
+$paragraph-font: lato, sans-serif;
+
+$background-light: #fff;
+$background-dark: #000;
+
+$text-dark: #333;
+$text-light: #eaeaea;
+
+@mixin title-font
+{
+  text-transform: uppercase;
+  font-family: $title-font;
+  text-align: center;
+}
+
+.media 
+{
+  //So much for mobile first >_<
+  @include media("<md") {
+    & > a {
+      display: block;
+    }
+    .media-body
+    {
+      display: block;
+      width: auto;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    img {
+        margin: 0 auto;
+    }
+  }
+
+  .media-left {
+    padding-right: 2rem;
+  }
+
+  h5 
+  {
+    margin-top: 1rem;
+    a
+    {       
+      color: $text-light;
+      i
+      {
+        padding-left: 10px;
+      }
+    }
+  }
+  
+}
+
+
+
+body
+{
+  font-family: lato, sans-serif;
+  color: #333;
+}
+
+hr.dot
+{
+  background: url("../img/hr-dot.png") center no-repeat;
+  height: 10px;
+  border: none;
+  margin: 20px 0 0 0;
+}
+
+nav.main
+{
+  margin: 0;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  background: transparent;
+  transition: background 0.2s ease-out;
+
+  ul
+  {
+    margin: 0;
+    li
+    {
+      font-size: 1.2rem;
+      padding: 10px 20px;     
+      a {
+        color: $text-dark;
+      } 
+    }
+  }
+
+  &.sticky
+  {
+    position: fixed;
+    z-index: 5;
+    width: 100%;
+    top: 0;
+    background: $background-dark;
+    transition: background 0.2s ease-out;
+    -webkit-transform: translate3d(0, 0, 0);
+
+    ul li a
+    {
+      color: $text-light;
+      transition: color 0.2s ease-out;
+    }
+
+    ul li.active
+    {
+      background: #fff;
+    }
+    ul li.active a
+    {
+      color: #111;
+    }
+  }
+}
+
+
+.lightbox {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  z-index: 10;
+  top: 0;
+  .content {
+    width: 700px;
+    height: 400px;
+    background: #fff;
+    position: fixed;    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .sorry
+  {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    color: $text-light;
+    a
+    {
+      color: $text-light;
+    }
+  }
+
+  .hide {
+    color: #fff;
+    font-size: 50px;
+    top: 10%;
+    right: 10%;
+    position: absolute;
+    cursor: pointer;
+  }
+}
+
+section
+{
+  background: #000;
+  margin-top: 40px;
+
+  .container-fluid {
+    background: $background-light;
+    padding: 20px 0;
+
+    .pre-heading
+    {
+      text-align: center;
+      font-size: 16px;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .line-heading
+    {
+      @include title-font;
+      font-size: 32px;
+      margin: 10px 0 0 0;
+    }
+
+    .sub-line-heading
+    {
+      text-align: center;
+      width: 80%;
+      margin: 30px auto 0;
+      font-size: 18px;
+      font-style: italic;
+      font-family: Georgia, serif;
+    }
+
+    .pre-heading:empty, .line-heading:empty, .sub-line-heading:empty {
+      display: none;
+    }
+  }
+
+  .container
+  {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: $text-light;
+
+    h4, h3
+    {
+      font-family: $title-font;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: darken($text-light, 20%);
+    }
+  }
+}
+
+section#head
+{  
+  background: $background-light;
+  
+  .container-fluid {
+    display: none;
+  }
+
+  .container {
+    color: $text-dark;
+    padding-bottom: 0px;
+  }
+  
+  h1
+  {
+    @include title-font; 
+    margin: 0 auto 20px;
+    font-size: 1.8rem;
+    @include media(">sm") {
+      font-size: 2.6rem;
+    }
+  }
+
+  img.po
+  {
+    margin: 0 auto;
+    display: block;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    @include media(">sm") {
+      width: 250px;
+      height: 250px;
+    }
+  }
+
+  .po-quote
+  {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    position: relative;
+    text-align: center;
+    line-height: 35px;
+    margin:  0 auto;
+    color: $text-dark;
+
+    @include media(">md") {
+      max-width: 600px; 
+      margin: 30px auto 0; 
+    }
+
+    &:before
+    {
+      content: "\201C";
+      font-size: 100px;
+      display: block;
+      padding: 60px 0 0;
+      @include media(">md") {
+        font-size: 140px;
+        position: absolute;
+        left: -80px;
+        top: -40%;
+      }      
+    }
+
+    &:after
+    {
+      content: "\201D";
+      font-size: 100px;
+      display: block;
+      padding: 40px 0 0;
+      @include media(">md") {
+        font-size: 140px;
+        position: absolute;
+        right: -80px;
+        top: 40%;
+      }
+    }
+  }
+}
+
+section#social 
+{
+  .list-inline {
+    text-align: center;
+    .list-inline-item {
+      margin: 0;
+      padding: 30px;
+      @include grow();
+      a {
+        color: $background-light;        
+        i {
+          font-size: 4rem;
+        }
+      }
+    }
+  }
+}
+
+section#projects {
+  background: $background-light;
+  .container {
+    color: $text-dark;
+
+    .row div {
+      text-align: center;
+      .image {
+        line-height: 200px;
+        img {
+          max-width: 80%;
+        }
+      }
+      p {
+        color: $text-dark;
+      }
+    }
+  }
+  
+}
+
+section#menu
+{
+  background: $background-light;
+  margin: 40px 0 40px;
+}
+
+
+section#contact
+{
+  .container
+  {
+    h5 {
+      margin-top: 1rem;
+    }
+    img {
+      height: 230px;
+    }
+  }
+}
+
+section#about
+{
+  h3 {
+    font-size: 1rem;
+  }
+
+  h4 {
+    font-size: .8rem;
+    margin: 40px 0 0 0;
+  }
+
+  ul {
+    margin: 10px 0 0 0;
+    list-style-type: none;
+    padding: 0;
+    li {
+      color: darken($text-light, 20%);
+    }
+  }
+  .cv
+  {
+    margin-top: 2rem;
+    
+    a{
+      color: $text-light;
+    }
+  }
+}
+
+footer
+{
+  text-align: center;
+  margin: 50px auto 20px;
+}
